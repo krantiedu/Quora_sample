@@ -1,0 +1,182 @@
+<!Doctype html>
+<html>
+  <head>
+    <title>MYQuora</title>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href = "/stylesheets/main.css" rel = "stylesheet">
+ <style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Montserrat:wght@600&display=swap');
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #404040;
+  
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+  .login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.login-box {
+  width: 25em;
+  height: 22em;
+  padding: 20px;
+  background-color: #797979;
+  border-radius: 1em;
+  box-shadow: 0 0 5px #726f77; 
+  color: #ffffff;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 45px;
+  font-size: 200%;
+  text-shadow: 0 0 5px #cacaca; 
+}
+
+p {
+  margin-top: 18px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 45px;
+  font-size: 70%;
+  text-shadow: 0 0 5px #cacaca; 
+}
+
+.form-group {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  border-radius: 1em;
+  border: 2px solid #535353;
+}
+
+button {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  margin-top: 40px;
+  background-color: #5d5d5d;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  border-radius: 1em;
+  cursor: pointer;
+  box-shadow: 0 0 5px #fff; 
+}
+
+button:hover {
+  color: rgb(223, 223, 223);
+  box-shadow: 0 0 5px #fff; 
+  animation: glowing 7s infinite;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 5px #fff;
+  }
+  25% {
+    box-shadow: 0 0 5px #276e88;
+  }
+  50% {
+    box-shadow: 0 0 20px #399062;
+  }
+  65% {
+    box-shadow: 0 0 5px #8070bb;
+  }
+  95% {
+    box-shadow: 0 0 5px #bfbfc1;
+  }
+  100% {
+    box-shadow: 0 0 5px #ffffff;
+  }
+}
+  
+ </style>
+  
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+       <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          MYQuora
+        </a>
+       </div>
+       <div class = "collapse navbar-collapse">
+        <ul class= "nav navbar-nav navbar-right">
+          <% if (!currentUser){ %> 
+            <li><a href= "/">Home</a></li>
+          <li><a href= "/login">Login</a></li>
+          <li><a href= "/register">Sign Up</a></li>
+          <%} else{%>
+          <li><a href = "#">Signed in as <%=currentUser.username%></a></li>
+            <li><a href= "/logout">Log Out</a></li>
+          <%}%>
+        </ul>
+       </div>
+     </div>
+    </nav>
+    
+   
+      
+      
+    
+    </div>
+      
+       
+    
+<div style="height: 80vh;" class="login-container">
+  <div class="">
+    <h2>Login</h2>
+    <form action = "/login" method = "POST">
+      <div class="form-group">
+        <input type="text" id="username" name="username" placeholder="USERNAME">
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" name="password" placeholder="PASSWORD">
+      </div>
+      <button type="submit">Submit</button>
+      <div class="register">
+        <p> <a style="text-decoration: none; font-size: 15px;" href="/register">Register here</a></p>
+       
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- <form action = "/login" method = "POST">
+  <input type = "text" name = "username" placeholder = "Username">
+  <input type = "password" name = "password" placeholder = "password">
+  <button>
+    Login
+  </button>
+</form> -->
+
+<% include partials/footer %>
